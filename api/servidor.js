@@ -2,6 +2,8 @@ const express = require('express');
 const mysql = require('mysql2');
 const app = express();
 const port = 3000;
+const cors = require('cors');
+app.use(cors());
 
 const db = mysql.createConnection({
     host: 'localhost',
@@ -25,7 +27,7 @@ app.get('/task', (req, res) => {
 });
 
 app.post('/task', (req, res) => {
-    const newTask = { id:req.body.id,  nombre: req.body.nombre };
+    const newTask = {nombre: req.body.nombre };
     db.query('INSERT INTO task SET ?', newTask, (err, result) => {
         if (err) throw err;
         res.json({ id: result.insertId, ...newTask });
