@@ -1,0 +1,6 @@
+{
+  "appId": "com.example.app",
+  "appName": "induccion",
+  "webDir": "build",
+  "bundledWebRuntime": false
+}
